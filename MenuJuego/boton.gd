@@ -9,5 +9,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_boton_pressed() -> void:
-		get_tree().change_scene_to_file("res://escenas/escena_principal.tscn")
+		get_tree().change_scene_to_file("res://escenas/intro.tscn")
 		print("El mouse clickeo el boton ")
