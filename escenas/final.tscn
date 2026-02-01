@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cidp1vl72dqty"]
+
+[ext_resource type="Texture2D" uid="uid://bf34modvjr2l1" path="res://ImagenesHistoria/pure-black-colour-full-260nw-2564428349.webp" id="1_teg0c"]
+[ext_resource type="Texture2D" uid="uid://cgmpm38bl0iua" path="res://ImagenesHistoria/FINAL.jpeg" id="2_5at5q"]
+
+[node name="Final" type="Node2D" unique_id=1134778227]
+position = Vector2(1828, 379)
+
+[node name="PureBlackColourFull260Nw2564428350" type="Sprite2D" parent="." unique_id=667504317]
+position = Vector2(574, 25.5)
+scale = Vector2(1, 2.7178571)
+texture = ExtResource("1_teg0c")
+
+[node name="PureBlackColourFull260Nw2564428349" type="Sprite2D" parent="." unique_id=355751442]
+position = Vector2(-559, 25)
+scale = Vector2(1, 2.65)
+texture = ExtResource("1_teg0c")
+
+[node name="Final" type="Sprite2D" parent="." unique_id=210746038]
+scale = Vector2(0.67773443, 0.640625)
+texture = ExtResource("2_5at5q")
+
+[node name="Camera2D" type="Camera2D" parent="Final" unique_id=218501675]
+scale = Vector2(1.4755042, 1.5609756)

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c7l6pnugudc44"]
+
+[ext_resource type="Texture2D" uid="uid://bf34modvjr2l1" path="res://ImagenesHistoria/pure-black-colour-full-260nw-2564428349.webp" id="1_78bx0"]
+[ext_resource type="Texture2D" uid="uid://b2ave6qs7vpvo" path="res://ImagenesHistoria/INTRO.jpeg" id="1_f8vwp"]
+[ext_resource type="Script" uid="uid://b7a2rgpn5kd11" path="res://escenas/intro.gd" id="1_xwtud"]
+
+[node name="Intro" type="Node2D" unique_id=900599920]
+position = Vector2(1776, 359)
+script = ExtResource("1_xwtud")
+
+[node name="PureBlackColourFull260Nw2564428349" type="Sprite2D" parent="." unique_id=2037793580]
+position = Vector2(-535, 58.75001)
+scale = Vector2(0.88095236, 2.9017856)
+texture = ExtResource("1_78bx0")
+
+[node name="PureBlackColourFull260Nw2564428350" type="Sprite2D" parent="." unique_id=1440649616]
+position = Vector2(557, 66.554474)
+scale = Vector2(0.77607703, 3.1246107)
+texture = ExtResource("1_78bx0")
+
+[node name="Intro" type="Sprite2D" parent="." unique_id=1035033015]
+scale = Vector2(0.6940105, 0.64453125)
+texture = ExtResource("1_f8vwp")
+
+[node name="Camera2D" type="Camera2D" parent="Intro" unique_id=33310778]
+scale = Vector2(1.4409003, 1.5515151)
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1734237656]
+offset_left = -512.0
+offset_top = 204.0
+offset_right = 509.0
+offset_bottom = 309.0
+text = "Alguna vez existió un hechicero con buenas intenciones llamado Malakor, usaba su poder para combatir fuerzas superiores por la
+humanidad, hasta que un día lo hieren de gravedad y decide usar uno de los rituales prohibidos, invocar a una máscara llamada
+Ixchel, que mientras ella tuviera luz de luna, le amplificaría sus poderes. Pero ella tenía otros planes.
+
+Ixchel solo estaba usando a Malakor ya que quería destruir el mundo, ella aparte de la luz de luna, también absorbe la vitalidad de
+su portador, con la energía del de Malakor y la luna, ella seria invencible. Malakor se dio cuenta de esto a tiempo, justo antes de
+que ella acabara con él, de un hechizo rápido y de imprevisto para Ixchel se la logro quitar y la encerró en lo mas profundo de un
+calabozo, ella planea retomar su plan, ¿podrá hacerlo? 
+(DOBLE CLIC PARA SALTAR)"
+metadata/_edit_use_anchors_ = true
