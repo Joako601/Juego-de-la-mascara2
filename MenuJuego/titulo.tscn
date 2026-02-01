@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b6abpxblw8awm"]
+
+[ext_resource type="Texture2D" uid="uid://cjkvc76wu8y6a" path="res://Assets/images/ImagenesMenuJuego/TITULOO.png" id="1_vlua4"]
+
+[node name="Titulo" type="Node2D" unique_id=266044785]
+
+[node name="Tituloo" type="Sprite2D" parent="." unique_id=1539360954]
+position = Vector2(588, 284)
+scale = Vector2(0.9435185, 0.7763888)
+texture = ExtResource("1_vlua4")

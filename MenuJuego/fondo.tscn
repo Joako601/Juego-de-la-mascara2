@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bn8ox0xrdaq4f"]
+
+[ext_resource type="Texture2D" uid="uid://8j3yf4kruenp" path="res://Assets/images/ImagenesMenuJuego/FONDOOO.webp" id="2_iygr4"]
+
+[node name="Fondo" type="Node2D" unique_id=1681309211]
+
+[node name="DungeonPixelArtGameLevel260Nw2689681083" type="Sprite2D" parent="." unique_id=1371286786]
+position = Vector2(575, 348)
+scale = Vector2(2.2423077, 2.557143)
+texture = ExtResource("2_iygr4")

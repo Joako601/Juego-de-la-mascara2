@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://kpo6bixupad6"]
+
+[ext_resource type="Script" uid="uid://co8tnsto764eq" path="res://soldier1.gd" id="1_og2ks"]
+[ext_resource type="Texture2D" uid="uid://crisbsdthcpyn" path="res://Assets/enemies/Free Assets Soldier Version Four/Black_Soldier.png" id="2_c3tsy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og2ks"]
+size = Vector2(35, 51.38893)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6brf"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(0, 737, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7khvx"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(116, 737, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sgix"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(232, 737, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwc5m"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(0, 803, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br82j"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(116, 803, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na4kf"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(232, 803, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wswln"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(0, 871, 116, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q52it"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(0, 4, 116, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34rdi"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(116, 4, 116, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snuk3"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(232, 4, 116, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ln0n"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(0, 209, 116, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obx2e"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(116, 209, 116, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6yib"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(0, 276, 116, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyc6j"]
+atlas = ExtResource("2_c3tsy")
+region = Rect2(116, 276, 116, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o62ll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6brf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7khvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sgix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwc5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br82j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na4kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wswln")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q52it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34rdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snuk3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ln0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obx2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6yib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyc6j")
+}],
+"loop": true,
+"name": &"shooting",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3tsy"]
+size = Vector2(35, 42)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2112557145]
+script = ExtResource("1_og2ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=696558758]
+position = Vector2(6.5, 9.499999)
+scale = Vector2(1, 0.71999943)
+shape = SubResource("RectangleShape2D_og2ks")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1190278251]
+sprite_frames = SubResource("SpriteFrames_o62ll")
+animation = &"shooting"
+frame_progress = 0.9770691
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1246832673 groups=["enemigo"]]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2053885525]
+position = Vector2(6, 12)
+shape = SubResource("RectangleShape2D_c3tsy")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

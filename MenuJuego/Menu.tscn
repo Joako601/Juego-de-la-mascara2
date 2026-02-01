@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cm7idjl71pohf"]
+
+[ext_resource type="PackedScene" uid="uid://bn8ox0xrdaq4f" path="res://MenuJuego/fondo.tscn" id="1_fj0lk"]
+[ext_resource type="PackedScene" uid="uid://caexwooma73oi" path="res://MenuJuego/boton.tscn" id="2_6kyus"]
+[ext_resource type="PackedScene" uid="uid://b6abpxblw8awm" path="res://MenuJuego/titulo.tscn" id="2_crea4"]
+
+[node name="Menu" type="Node2D" unique_id=507777995]
+
+[node name="Fondo" parent="." unique_id=1681309211 instance=ExtResource("1_fj0lk")]
+
+[node name="Titulo" parent="." unique_id=266044785 instance=ExtResource("2_crea4")]
+position = Vector2(7, -16)
+
+[node name="Button" parent="." unique_id=167277640 instance=ExtResource("2_6kyus")]
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 6.0
+offset_bottom = 5.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1601122889]
+position = Vector2(574, 321)

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://brtfp3wahe65u"]
+
+[ext_resource type="PackedScene" uid="uid://ckpxfeuy0tr6u" path="res://escenas/estructura.tscn" id="1_733rl"]
+[ext_resource type="PackedScene" uid="uid://bolawt4eeyjv1" path="res://escenas/personaje.tscn" id="2_3tyi2"]
+[ext_resource type="PackedScene" uid="uid://cjfjn5omsrqkt" path="res://hud.tscn" id="2_uxd1d"]
+[ext_resource type="PackedScene" uid="uid://kpo6bixupad6" path="res://escenas/soldier1.tscn" id="3_imiid"]
+[ext_resource type="AudioStream" uid="uid://cus47ug5dwkqd" path="res://escenas/Mazmorras del Eco Antiguo.mp3" id="5_hxpc2"]
+
+[sub_resource type="Gradient" id="Gradient_hxpc2"]
+offsets = PackedFloat32Array(0.8701299, 0.9025974)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_arkap"]
+offsets = PackedFloat32Array(0, 0.91549295, 1)
+colors = PackedColorArray(0.3019608, 0, 0, 1, 0.3254902, 0, 0, 1, 0.3764706, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hytxr"]
+gradient = SubResource("Gradient_arkap")
+
+[node name="Escena principal" type="Node2D" unique_id=533774255]
+
+[node name="HUD" parent="." unique_id=1553573608 instance=ExtResource("2_uxd1d")]
+
+[node name="Estructura" parent="." unique_id=1291270224 instance=ExtResource("1_733rl")]
+
+[node name="Personaje" parent="." unique_id=274527602 instance=ExtResource("2_3tyi2")]
+position = Vector2(-3, 509)
+
+[node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895]
+zoom = Vector2(3.8, 3.8)
+limit_left = -160
+limit_top = -528
+limit_right = 144
+limit_bottom = 528
+
+[node name="Line2D" type="Line2D" parent="Personaje" unique_id=1095533111]
+points = PackedVector2Array(376, 124, 374, 214, 410, 210, 374, 210)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+gradient = SubResource("Gradient_hxpc2")
+texture = SubResource("GradientTexture2D_hytxr")
+texture_mode = 1
+
+[node name="Node2D" type="Node2D" parent="." unique_id=78772810]
+
+[node name="CharacterBody2D" parent="Node2D" unique_id=2112557145 instance=ExtResource("3_imiid")]
+position = Vector2(-132, 420)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=582719382]
+stream = ExtResource("5_hxpc2")
+autoplay = true
