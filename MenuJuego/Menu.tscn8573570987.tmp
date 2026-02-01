@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cm7idjl71pohf"]
+
+[ext_resource type="PackedScene" uid="uid://bn8ox0xrdaq4f" path="res://Menu/fondo.tscn" id="1_u03px"]
+[ext_resource type="PackedScene" uid="uid://c8x7508djda8v" path="res://Menu/titulo.tscn" id="2_crea4"]
+[ext_resource type="PackedScene" uid="uid://caexwooma73oi" path="res://Menu/boton.tscn" id="3_w32jx"]
+
+[node name="Node2D" type="Node2D" unique_id=507777995]
+
+[node name="Fondo" parent="." unique_id=1681309211 instance=ExtResource("1_u03px")]
+
+[node name="Titulo" parent="." unique_id=266044785 instance=ExtResource("2_crea4")]
+
+[node name="Boton" parent="." unique_id=864067141 instance=ExtResource("3_w32jx")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1601122889]
+position = Vector2(574, 321)

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://caexwooma73oi"]
+
+[ext_resource type="Script" uid="uid://dmgnuk3gqsc7t" path="res://MenuJuego/boton.gd" id="1_o8aqr"]
+[ext_resource type="Texture2D" uid="uid://ctaicjg4w0vqh" path="res://Assets/images/ImagenesMenuJuego/PRESS START.png" id="2_cx8rf"]
+
+[node name="Button" type="Button" unique_id=167277640]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1144.0
+offset_bottom = -640.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o8aqr")
+
+[node name="Boton" type="TextureButton" parent="." unique_id=864067141]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 332.0
+offset_top = 424.0
+offset_right = 1412.0
+offset_bottom = 1144.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.47777778, 0.3745507)
+size_flags_horizontal = 0
+texture_normal = ExtResource("2_cx8rf")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Boton" to="." method="_on_boton_pressed"]
