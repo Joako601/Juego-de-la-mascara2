@@ -24,7 +24,7 @@ gradient = SubResource("Gradient_arkap")
 [node name="Estructura" parent="." unique_id=1291270224 instance=ExtResource("1_733rl")]
 
 [node name="Personaje" parent="." unique_id=274527602 instance=ExtResource("2_3tyi2")]
-position = Vector2(45, 473)
+position = Vector2(94, 467)
 
 [node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895]
 zoom = Vector2(3.8, 3.8)
