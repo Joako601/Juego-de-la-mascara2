@@ -50,4 +50,4 @@ position = Vector2(-132, 420)
 stream = ExtResource("5_hxpc2")
 autoplay = true
 
-[node name="Node" type="Node" parent="AudioStreamPlayer" unique_id=1242444793]
+[node name="jajajjajajaja" type="Node" parent="AudioStreamPlayer" unique_id=1242444793]
