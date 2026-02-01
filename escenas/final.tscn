@@ -22,3 +22,11 @@ texture = ExtResource("2_5at5q")
 
 [node name="Camera2D" type="Camera2D" parent="Final" unique_id=218501675]
 scale = Vector2(1.4755042, 1.5609756)
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1195225009]
+offset_left = -480.0
+offset_top = 229.0
+offset_right = 496.0
+offset_bottom = 296.0
+text = "Despues de ser liberada y de haber poseido a Malakor, Ixchel se volvió invencible gracias a la energía de su portador y la luz
+de luna, logrando su objetivo de destruir el mundo."

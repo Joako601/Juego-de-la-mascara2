@@ -1,6 +1,11 @@
 extends CharacterBody2D
 @export var animacion: AnimatedSprite2D
 
+
+@onready var sonido_lanzamiento=$lanzamiento
+@onready var sonido_arrastre=$arrastre
+@onready var sonido_matar=$matar
+
 # Variables de control del mouse
 var mouse_en_la_mascara: bool = false
 var mascara_agarrada: bool = false
@@ -26,6 +31,14 @@ signal vida_cambiada(vida_nueva: int, vida_max: int)
 signal mascara_muerta
 # ===========================
 
+# Variables para detección de pinchos
+var puede_recibir_daño_pincho = true
+var cooldown_pincho = 1.0
+
+# ===== REFERENCIA AL TILEMAPLAYER DE PINCHOS =====
+var tilemap_pinchos: TileMapLayer
+# ==================================
+
 # =====Variables Parabola =====
 @onready var linea_guia = $Line2D
 @export var puntos_parabola: int = 25
@@ -36,6 +49,24 @@ var pegado_al_enemigo: bool=false
 
 func _ready() -> void:
 	vida_actual = vida_maxima
+	
+	sonido_lanzamiento.volume_db=+10
+	sonido_arrastre.volume_db=+70
+	sonido_matar.volume_db=+40
+	
+	# Esperar un frame para que la escena esté completa
+	await get_tree().process_frame
+	
+	# Buscar directamente el nodo "borde" dentro de Estructura
+	var estructura = get_tree().root.get_node_or_null("Escena principal/Estructura")
+	if estructura:
+		tilemap_pinchos = estructura.get_node_or_null("pinchos")
+	print("TileMapLayer pinchos encontrado: ", tilemap_pinchos)
+	if tilemap_pinchos:
+		var metodos = []
+		for m in tilemap_pinchos.get_method_list():
+			metodos.append(m["name"])
+		print("Métodos disponibles: ", metodos)
 	
 	# Iniciar pérdida de vida continua
 	iniciar_perdida_vida()
@@ -68,6 +99,9 @@ func _input(event: InputEvent) -> void:
 		print("Soltando mascara - Saltos usados: ", saltos_usados)
 		mascara_agarrada = false
 		tiempo_ralentizado = false
+		#efecto de sonido lanzamiento
+		sonido_lanzamiento.play()
+		
 		
 		var vector_final = get_global_mouse_position() - posicion_inicial
 		vector_final = vector_final.limit_length(radio_maximo)
@@ -141,6 +175,36 @@ func _physics_process(delta: float) -> void:
 		
 		if en_suelo and velocity.length() < velocidad_minima:
 			velocity.x = 0
+	
+	# ===== DETECCIÓN DE PINCHOS =====
+	_verificar_pinchos()
+
+# ===== FUNCIÓN DE DETECCIÓN DE PINCHOS =====
+func _verificar_pinchos() -> void:
+	if not tilemap_pinchos or not puede_recibir_daño_pincho:
+		return
+	
+	# Revisar varios puntos alrededor del personaje
+	var puntos_chequeo = [
+		global_position,
+		global_position + Vector2(8, 0),
+		global_position + Vector2(-8, 0),
+		global_position + Vector2(0, 8),
+		global_position + Vector2(0, -8),
+	]
+	
+	for punto in puntos_chequeo:
+		var pos_local = tilemap_pinchos.to_local(punto)
+		var coordenada_tile = tilemap_pinchos.local_to_map(pos_local)
+		var datos_tile = tilemap_pinchos.get_cell_tile_data(coordenada_tile)
+		
+		if datos_tile != null:
+			print("💔 ¡Colisionaste con un pincho!")
+			recibir_danio(40)
+			puede_recibir_daño_pincho = false
+			get_tree().create_timer(cooldown_pincho).timeout.connect(func(): puede_recibir_daño_pincho = true)
+			return
+# =============================================
 
 func _process(_delta: float) -> void:
 	if tiempo_ralentizado:
@@ -159,9 +223,6 @@ func _process(_delta: float) -> void:
 
 	if pegado_al_enemigo:
 		$AnimatedSprite2D.play("pegado")
-		
-		
-		
 		return
 
 # ===== FUNCIONES DEL SISTEMA DE VIDA =====
@@ -186,6 +247,7 @@ func recibir_danio(cantidad: int) -> void:
 	# Verificar si murió
 	if vida_actual <= 0:
 		morir()
+
 func morir() -> void:
 	print("¡La máscara ha muerto! Game Over")
 	mascara_muerta.emit()
@@ -244,15 +306,12 @@ func _actualizar_parabola() -> void:
 	
 	linea_guia.points = puntos
 
-
-
-
-
 #detecta cuando la mascara y.el soldado chocan
 func _on_area_2d_2_area_entered(area: Area2D) -> void:
 	print("coalicion de la mascara con algo")
 	if area.is_in_group("enemie"):
 		print("enemigo tocado")
+		sonido_matar.play()
 		_mover_hacia_enemigo(area)
 
 func _mover_hacia_enemigo(enemigo: Area2D) -> void:
@@ -288,3 +347,4 @@ func _al_llegar_al_enemigo(enemigo: Area2D) -> void:
 	velocity = Vector2.ZERO
 	mascara_agarrada = false
 	set_physics_process(true)
+	

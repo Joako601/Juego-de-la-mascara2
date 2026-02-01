@@ -4,7 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bolawt4eeyjv1" path="res://escenas/personaje.tscn" id="2_3tyi2"]
 [ext_resource type="PackedScene" uid="uid://cjfjn5omsrqkt" path="res://hud.tscn" id="2_uxd1d"]
 [ext_resource type="PackedScene" uid="uid://kpo6bixupad6" path="res://escenas/soldier1.tscn" id="3_imiid"]
+[ext_resource type="AudioStream" uid="uid://dtpj4djvigoqd" path="res://Assets/sonidos/air-blow-380645.mp3" id="4_lgbs2"]
 [ext_resource type="AudioStream" uid="uid://cus47ug5dwkqd" path="res://escenas/Mazmorras del Eco Antiguo.mp3" id="5_hxpc2"]
+[ext_resource type="AudioStream" uid="uid://dl037nhr0bxqs" path="res://Assets/sonidos/arrastre.mp3" id="5_uvpe0"]
+[ext_resource type="Script" uid="uid://c2c2hcnbv31hf" path="res://escenas/hechicero.gd" id="6_arkap"]
+[ext_resource type="AudioStream" uid="uid://dejndjhlrjgmj" path="res://Assets/sonidos/muerte_soldado.mp3" id="6_jhjxh"]
+[ext_resource type="Texture2D" uid="uid://bmwac8adjo0gj" path="res://Assets/UI/Idle.png" id="7_hytxr"]
+[ext_resource type="AudioStream" uid="uid://cb6li8umnhwto" path="res://Assets/sonidos/llegar a puerta final.mp3" id="8_x0fml"]
 
 [sub_resource type="Gradient" id="Gradient_hxpc2"]
 offsets = PackedFloat32Array(0.8701299, 0.9025974)
@@ -17,6 +23,73 @@ colors = PackedColorArray(0.3019608, 0, 0, 1, 0.3254902, 0, 0, 1, 0.3764706, 0, 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hytxr"]
 gradient = SubResource("Gradient_arkap")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgbs2"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(0, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0fml"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(250, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvpe0"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(500, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhjxh"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(750, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tchxr"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(1000, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mxg4"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(1250, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5urwu"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(1500, 0, 250, 167)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ud5g6"]
+atlas = ExtResource("7_hytxr")
+region = Rect2(1750, 0, 250, 167)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55ee4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgbs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0fml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvpe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhjxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tchxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mxg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5urwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ud5g6")
+}],
+"loop": true,
+"name": &"hechicero",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hytxr"]
+size = Vector2(34, 64)
+
 [node name="Escena principal" type="Node2D" unique_id=533774255]
 
 [node name="HUD" parent="." unique_id=1553573608 instance=ExtResource("2_uxd1d")]
@@ -24,12 +97,12 @@ gradient = SubResource("Gradient_arkap")
 [node name="Estructura" parent="." unique_id=1291270224 instance=ExtResource("1_733rl")]
 
 [node name="Personaje" parent="." unique_id=274527602 instance=ExtResource("2_3tyi2")]
-position = Vector2(-3, 509)
+position = Vector2(-4, 499)
 
-[node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895 groups=["mascara_camara"]]
+[node name="Camera2D2" type="Camera2D" parent="Personaje" unique_id=1440370058]
 zoom = Vector2(3.8, 3.8)
 limit_left = -160
-limit_top = -528
+limit_top = -720
 limit_right = 144
 limit_bottom = 528
 
@@ -40,6 +113,26 @@ default_color = Color(1, 0, 0, 1)
 gradient = SubResource("Gradient_hxpc2")
 texture = SubResource("GradientTexture2D_hytxr")
 texture_mode = 1
+
+[node name="lanzamiento" type="AudioStreamPlayer2D" parent="Personaje" unique_id=304082544]
+position = Vector2(116.500015, -431.75)
+scale = Vector2(1.156, 1.164671)
+stream = ExtResource("4_lgbs2")
+
+[node name="arrastre" type="AudioStreamPlayer2D" parent="Personaje" unique_id=1340576986]
+position = Vector2(34, 199)
+stream = ExtResource("5_uvpe0")
+
+[node name="matar" type="AudioStreamPlayer2D" parent="Personaje" unique_id=74280772]
+stream = ExtResource("6_jhjxh")
+volume_db = 11.254
+
+[node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895 groups=["mascara_camara"]]
+zoom = Vector2(3.8, 3.8)
+limit_left = -161
+limit_top = -720
+limit_right = 143
+limit_bottom = 509
 
 [node name="Node2D" type="Node2D" parent="." unique_id=78772810]
 
@@ -70,3 +163,26 @@ position = Vector2(-134, 418)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=582719382]
 stream = ExtResource("5_hxpc2")
 autoplay = true
+
+[node name="Hechicero" type="CharacterBody2D" parent="." unique_id=1087732126 groups=["Hechiceroo"]]
+script = ExtResource("6_arkap")
+
+[node name="Final" type="AudioStreamPlayer2D" parent="Hechicero" unique_id=1259352697]
+stream = ExtResource("8_x0fml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hechicero" unique_id=2129463999]
+position = Vector2(82.500015, -630.75)
+scale = Vector2(1.156, 1.164671)
+sprite_frames = SubResource("SpriteFrames_55ee4")
+animation = &"hechicero"
+autoplay = "hechicero"
+frame_progress = 0.6617381
+
+[node name="Area2D" type="Area2D" parent="Hechicero" unique_id=1269909019 groups=["Hechiceroo"]]
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hechicero/Area2D" unique_id=1110700230 groups=["Hechiceroo"]]
+position = Vector2(79, -565)
+shape = SubResource("RectangleShape2D_hytxr")
+
+[connection signal="body_entered" from="Hechicero/Area2D" to="Hechicero" method="_on_area_2d_body_entered"]
