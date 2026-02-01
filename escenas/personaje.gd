@@ -26,55 +26,18 @@ signal vida_cambiada(vida_nueva: int, vida_max: int)
 signal mascara_muerta
 # ===========================
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
-# Variables para detección de pinchos
-var puede_recibir_daño_pincho = true
-var cooldown_pincho = 1.0
-
-# ===== REFERENCIA AL TILEMAPLAYER DE PINCHOS =====
-var tilemap_pinchos: TileMapLayer
-# ==================================
-
-<<<<<<< HEAD
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 # =====Variables Parabola =====
 @onready var linea_guia = $Line2D
 @export var puntos_parabola: int = 25
 @export var precision_parabola: float = 0.1
 
+#variables de animacion para cuando esta chupando
+var pegado_al_enemigo: bool=false
+
 func _ready() -> void:
 	vida_actual = vida_maxima
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	# Iniciar pérdida de vida continua
-=======
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
-	# Esperar un frame para que la escena esté completa
-	await get_tree().process_frame
-	
-	# Buscar directamente el nodo "borde" dentro de Estructura
-	var estructura = get_tree().root.get_node_or_null("Escena principal/Estructura")
-	if estructura:
-		tilemap_pinchos = estructura.get_node_or_null("pinchos")
-	print("TileMapLayer pinchos encontrado: ", tilemap_pinchos)
-	if tilemap_pinchos:
-		var metodos = []
-		for m in tilemap_pinchos.get_method_list():
-			metodos.append(m["name"])
-		print("Métodos disponibles: ", metodos)
-	
-<<<<<<< HEAD
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	iniciar_perdida_vida()
 
 func _on_area_2d_mouse_entered() -> void:
@@ -118,36 +81,22 @@ func _physics_process(delta: float) -> void:
 	
 	# ===== ANIMACIÓN Y FLIP =====
 	if mascara_agarrada:
-<<<<<<< HEAD
-		$AnimatedSprite2D.play("idle")
-	else:
-=======
-<<<<<<< HEAD
 		# Cuando está siendo arrastrada, mostrar idle
 		$AnimatedSprite2D.play("idle")
 	else:
 		# Cambiar animación según velocidad
-=======
-		$AnimatedSprite2D.play("idle")
-	else:
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 		if velocity.length() > 2:
 			$AnimatedSprite2D.play("moving")
 		else:
 			$AnimatedSprite2D.play("idle")
 		
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 		# Flip horizontal según dirección
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 		if velocity.x > 5:
 			$AnimatedSprite2D.flip_h = false
 		elif velocity.x < -5:
 			$AnimatedSprite2D.flip_h = true
+		
+
 	# ============================
 	
 	if mascara_agarrada:
@@ -192,45 +141,6 @@ func _physics_process(delta: float) -> void:
 		
 		if en_suelo and velocity.length() < velocidad_minima:
 			velocity.x = 0
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
-	
-	# ===== DETECCIÓN DE PINCHOS =====
-	_verificar_pinchos()
-
-# ===== FUNCIÓN DE DETECCIÓN DE PINCHOS =====
-func _verificar_pinchos() -> void:
-	if not tilemap_pinchos or not puede_recibir_daño_pincho:
-		return
-	
-	# Revisar varios puntos alrededor del personaje
-	var puntos_chequeo = [
-		global_position,
-		global_position + Vector2(8, 0),
-		global_position + Vector2(-8, 0),
-		global_position + Vector2(0, 8),
-		global_position + Vector2(0, -8),
-	]
-	
-	for punto in puntos_chequeo:
-		var pos_local = tilemap_pinchos.to_local(punto)
-		var coordenada_tile = tilemap_pinchos.local_to_map(pos_local)
-		var datos_tile = tilemap_pinchos.get_cell_tile_data(coordenada_tile)
-		
-		if datos_tile != null:
-			print("💔 ¡Colisionaste con un pincho!")
-			recibir_danio(40)
-			puede_recibir_daño_pincho = false
-			get_tree().create_timer(cooldown_pincho).timeout.connect(func(): puede_recibir_daño_pincho = true)
-			return
-# =============================================
-<<<<<<< HEAD
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 
 func _process(_delta: float) -> void:
 	if tiempo_ralentizado:
@@ -240,124 +150,75 @@ func _process(_delta: float) -> void:
 		$AnimatedSprite2D.modulate = Color(1, 1, 1)
 		Engine.time_scale = 1.0
 		
-<<<<<<< HEAD
-	# Lógica de la parábola
-=======
-<<<<<<< HEAD
 # Lógica de la parábola
-=======
-	# Lógica de la parábola
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	if mascara_agarrada:
 		linea_guia.show()
 		_actualizar_parabola()
 	else:
 		linea_guia.hide()
 
+	if pegado_al_enemigo:
+		$AnimatedSprite2D.play("pegado")
+		
+		
+		
+		return
+
 # ===== FUNCIONES DEL SISTEMA DE VIDA =====
 
 func recibir_danio(cantidad: int) -> void:
+	# ← NUEVO: No recibir daño si está pegada al enemigo
+	if pegado_al_enemigo:
+		print("🛡️ Máscara invulnerable mientras consume enemigo")
+		return
+	
 	vida_actual -= cantidad
-<<<<<<< HEAD
-	vida_actual = max(vida_actual, 0)
-=======
-<<<<<<< HEAD
 	vida_actual = max(vida_actual, 0)  # Evita que la vida sea negativa
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	
 	print("¡Daño recibido! Vida actual: ", vida_actual, "/", vida_maxima)
 	
+	# Emitir señal para actualizar UI si la tienes
 	vida_cambiada.emit(vida_actual, vida_maxima)
 	
+	# Efecto visual de daño (parpadeo rojo)
 	_efecto_danio()
 	
-<<<<<<< HEAD
-=======
 	# Verificar si murió
-=======
-	vida_actual = max(vida_actual, 0)
-	
-	print("¡Daño recibido! Vida actual: ", vida_actual, "/", vida_maxima)
-	
-	vida_cambiada.emit(vida_actual, vida_maxima)
-	
-	_efecto_danio()
-	
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	if vida_actual <= 0:
 		morir()
-
 func morir() -> void:
 	print("¡La máscara ha muerto! Game Over")
 	mascara_muerta.emit()
 	
-<<<<<<< HEAD
-	Engine.time_scale = 1.0
-	
-=======
-<<<<<<< HEAD
 	# Restaurar la escala de tiempo antes de pausar
 	Engine.time_scale = 1.0
 	
 	# Mostrar Game Over en el HUD
-=======
-	Engine.time_scale = 1.0
-	
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.mostrar_game_over()
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	# Pausar el juego después de un momento
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = true
 
 func _efecto_danio() -> void:
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	# Parpadeo rojo al recibir daño
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	$AnimatedSprite2D.modulate = Color(1, 0.3, 0.3)
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 func curar(cantidad: int) -> void:
 	vida_actual += cantidad
-<<<<<<< HEAD
-	vida_actual = min(vida_actual, vida_maxima)
-=======
-<<<<<<< HEAD
 	vida_actual = min(vida_actual, vida_maxima)  # No superar la vida máxima
-=======
-	vida_actual = min(vida_actual, vida_maxima)
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	print("¡Curación! Vida actual: ", vida_actual, "/", vida_maxima)
 	vida_cambiada.emit(vida_actual, vida_maxima)
 
 func obtener_vida() -> int:
 	return vida_actual
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 # =========================================
 
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 func iniciar_perdida_vida() -> void:
 	while vida_actual > 0:
 		await get_tree().create_timer(1.0).timeout
@@ -365,38 +226,65 @@ func iniciar_perdida_vida() -> void:
 		
 func _actualizar_parabola() -> void:
 	var puntos = []
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	# Calculamos el vector de disparo igual que en tu función _input
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	var mouse_pos = get_global_mouse_position()
 	var vector_final = mouse_pos - posicion_inicial
 	vector_final = vector_final.limit_length(radio_maximo)
 	
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 	# Usamos el multiplicador 15 que tienes en tu código de lanzamiento
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 	var velocidad_simulada = -vector_final * 15
 	
 	for i in range(puntos_parabola):
 		var t = i * precision_parabola
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 		# x = v0 * t
 		# y = v0 * t + 0.5 * g * t^2
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
->>>>>>> d167c3c33bafc14a22f59cbc8510d284f5cc4095
 		var x = velocidad_simulada.x * t
 		var y = velocidad_simulada.y * t + 0.5 * get_gravity().y * (t * t)
 		puntos.append(Vector2(x, y))
 	
 	linea_guia.points = puntos
+
+
+
+
+
+#detecta cuando la mascara y.el soldado chocan
+func _on_area_2d_2_area_entered(area: Area2D) -> void:
+	print("coalicion de la mascara con algo")
+	if area.is_in_group("enemie"):
+		print("enemigo tocado")
+		_mover_hacia_enemigo(area)
+
+func _mover_hacia_enemigo(enemigo: Area2D) -> void:
+	set_physics_process(false)
+	mascara_agarrada = true
+	velocity = Vector2.ZERO
+	
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", enemigo.global_position, 0.15)\
+		.set_trans(Tween.TRANS_EXPO)\
+		.set_ease(Tween.EASE_OUT)
+	tween.finished.connect(_al_llegar_al_enemigo.bind(enemigo))
+
+func _al_llegar_al_enemigo(enemigo: Area2D) -> void:
+	velocity = Vector2.ZERO
+	global_position = enemigo.global_position
+	pegado_al_enemigo = true
+	
+	# Ocultar sprite del soldado mientras se chupa
+	if enemigo.get_parent().has_node("AnimatedSprite2D"):
+		enemigo.get_parent().get_node("AnimatedSprite2D").visible = false
+	
+	# Matar al soldado
+	if enemigo.get_parent().has_method("morir"):
+		enemigo.get_parent().morir()
+	
+	# ← NUEVO: Recuperar vida al matar al soldado
+	curar(30)  # Puedes cambiar el número a lo que quieras
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	pegado_al_enemigo = false
+	velocity = Vector2.ZERO
+	mascara_agarrada = false
+	set_physics_process(true)

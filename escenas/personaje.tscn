@@ -9,8 +9,11 @@ size = Vector2(36, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nfxw"]
 size = Vector2(379.5, 143.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcw2a"]
+size = Vector2(18, 17)
+
 [node name="Personaje" type="CharacterBody2D" unique_id=274527602 groups=["Personaje", "mascara"]]
-collision_layer = 8
+collision_layer = 10
 safe_margin = 0.001
 script = ExtResource("1_5nfxw")
 
@@ -18,21 +21,29 @@ script = ExtResource("1_5nfxw")
 position = Vector2(5.3699985, -3.4874992)
 scale = Vector2(0.23884612, 0.2122727)
 sprite_frames = ExtResource("1_v023a")
-animation = &"idle"
+animation = &"pegado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=684727236]
 position = Vector2(6, -2.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_v023a")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=851474396]
+[node name="Area2D" type="Area2D" parent="." unique_id=851474396 groups=["Personaje", "mascara"]]
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=785639136]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=785639136 groups=["mascara"]]
 position = Vector2(11, -3)
 shape = SubResource("RectangleShape2D_5nfxw")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[node name="Area2D2" type="Area2D" parent="." unique_id=303507174 groups=["mascara", "mask"]]
+collision_layer = 257
+collision_mask = 257
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=510666135 groups=["mascara"]]
+position = Vector2(6, -2.5)
+shape = SubResource("RectangleShape2D_mcw2a")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

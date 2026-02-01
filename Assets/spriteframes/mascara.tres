@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b1qs40rhvbuon" path="res://Assets/animacion mascara/ChatGPT_Image_Jan_31__2026__04_49_12_AM-removebg-preview.png" id="1_djoc8"]
 [ext_resource type="Texture2D" uid="uid://dtmyoqjq6rpsy" path="res://Assets/animacion mascara/ChatGPT_Image_Jan_31__2026__04_42_35_AM-removebg-preview.png" id="2_x52em"]
+[ext_resource type="Texture2D" uid="uid://cccdhbaodvmb1" path="res://Assets/animacion mascara/animacion_chupada_mascara-removebg-preview.png" id="3_x52em"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0n6ar"]
 atlas = ExtResource("1_djoc8")
@@ -26,6 +27,22 @@ region = Rect2(73, 192, 224, 156)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fie5p"]
 atlas = ExtResource("2_x52em")
 region = Rect2(297, 192, 224, 156)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eivgf"]
+atlas = ExtResource("3_x52em")
+region = Rect2(5, 0, 151, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l61ip"]
+atlas = ExtResource("3_x52em")
+region = Rect2(156, 0, 151, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2gdu"]
+atlas = ExtResource("3_x52em")
+region = Rect2(307, 0, 151, 280)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jctjg"]
+atlas = ExtResource("3_x52em")
+region = Rect2(458, 0, 151, 280)
 
 [resource]
 animations = [{
@@ -56,4 +73,21 @@ animations = [{
 "loop": true,
 "name": &"moving",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eivgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l61ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2gdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jctjg")
+}],
+"loop": true,
+"name": &"pegado",
+"speed": 5.0
 }]

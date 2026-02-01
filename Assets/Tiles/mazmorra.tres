@@ -549,13 +549,9 @@ texture = ExtResource("1_riogd")
 7:15/0 = 0
 7:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:16/0 = 0
-<<<<<<< HEAD
-7:17/0 = 0
-=======
 7:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:17/0 = 0
 7:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 7:18/0 = 0
 7:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:19/0 = 0

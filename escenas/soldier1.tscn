@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://co8tnsto764eq" path="res://soldier1.gd" id="1_og2ks"]
 [ext_resource type="Texture2D" uid="uid://crisbsdthcpyn" path="res://Assets/enemies/Free Assets Soldier Version Four/Black_Soldier.png" id="2_c3tsy"]
+[ext_resource type="PackedScene" uid="uid://cddq0naqw5rdr" path="res://escenas/proyectil.tscn" id="2_p6brf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_og2ks"]
 size = Vector2(35, 51.38893)
@@ -88,7 +89,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"dead",
-"speed": 15.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,8 +126,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3tsy"]
 size = Vector2(35, 42)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2112557145]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2112557145 groups=["enemie"]]
 script = ExtResource("1_og2ks")
+proyectil_scene = ExtResource("2_p6brf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=696558758]
 position = Vector2(6.5, 9.499999)
@@ -136,15 +138,17 @@ disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1190278251]
 sprite_frames = SubResource("SpriteFrames_o62ll")
-animation = &"shooting"
-frame_progress = 0.9770691
+animation = &"idle"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1246832673 groups=["enemigo"]]
-collision_layer = 0
-collision_mask = 0
+[node name="Area2D" type="Area2D" parent="." unique_id=1246832673 groups=["enemie", "enemigo"]]
+collision_layer = 256
+collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2053885525]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2053885525 groups=["enemie", "enemigo"]]
 position = Vector2(6, 12)
 shape = SubResource("RectangleShape2D_c3tsy")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=189068408]
+position = Vector2(25, 12)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

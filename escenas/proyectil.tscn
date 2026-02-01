@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cddq0naqw5rdr"]
+
+[ext_resource type="Texture2D" uid="uid://bvp5mvb4uagus" path="res://Assets/animacion mascara/WhatsApp_Image_2026-02-01_at_9.00.34_AM-removebg-preview.png" id="1_2mwwa"]
+[ext_resource type="Script" uid="uid://kx67e1lmu53a" path="res://escenas/proyectil.gd" id="1_y2gxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxetq"]
+size = Vector2(14, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2gxt"]
+atlas = ExtResource("1_2mwwa")
+region = Rect2(410, 32, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxetq"]
+atlas = ExtResource("1_2mwwa")
+region = Rect2(427, 32, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j1yi"]
+atlas = ExtResource("1_2mwwa")
+region = Rect2(444, 32, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wtim"]
+atlas = ExtResource("1_2mwwa")
+region = Rect2(461, 32, 17, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm822"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2gxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxetq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j1yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wtim")
+}],
+"loop": true,
+"name": &"bala",
+"speed": 11.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=1672768863]
+collision_layer = 2
+script = ExtResource("1_y2gxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2070528880]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_cxetq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=894037985]
+sprite_frames = SubResource("SpriteFrames_fm822")
+animation = &"bala"
+frame_progress = 0.74930555

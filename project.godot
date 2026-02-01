@@ -10,11 +10,7 @@ config_version=5
 
 [application]
 
-<<<<<<< HEAD
 config/name="The Soul Shell 1.2"
-=======
-config/name="Vessel Jump Estandar"
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 run/main_scene="uid://cm7idjl71pohf"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -22,6 +18,12 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="viewport"
+
+[global_group]
+
+enemie=""
+mask=""
+mascara_camara=""
 
 [input]
 

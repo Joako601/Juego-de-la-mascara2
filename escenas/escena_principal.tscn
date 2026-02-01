@@ -5,11 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cjfjn5omsrqkt" path="res://hud.tscn" id="2_uxd1d"]
 [ext_resource type="PackedScene" uid="uid://kpo6bixupad6" path="res://escenas/soldier1.tscn" id="3_imiid"]
 [ext_resource type="AudioStream" uid="uid://cus47ug5dwkqd" path="res://escenas/Mazmorras del Eco Antiguo.mp3" id="5_hxpc2"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://c26cbgovfq4d6" path="res://Assets/enemies/Idle_edit.png" id="6_hytxr"]
-[ext_resource type="Script" uid="uid://hkbc51sctidd" path="res://escenas/hechizero.gd" id="6_lgbs2"]
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 
 [sub_resource type="Gradient" id="Gradient_hxpc2"]
 offsets = PackedFloat32Array(0.8701299, 0.9025974)
@@ -22,69 +17,6 @@ colors = PackedColorArray(0.3019608, 0, 0, 1, 0.3254902, 0, 0, 1, 0.3764706, 0, 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hytxr"]
 gradient = SubResource("Gradient_arkap")
 
-<<<<<<< HEAD
-[sub_resource type="AtlasTexture" id="AtlasTexture_hytxr"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(0, 0, 250, 168)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgbs2"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(250, 0, 250, 168)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0fml"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(750, 0, 250, 168)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvpe0"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(1000, 0, 250, 168)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhjxh"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(1250, 0, 250, 168)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tchxr"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(1500, 0, 250, 168)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mxg4"]
-atlas = ExtResource("6_hytxr")
-region = Rect2(1750, 0, 250, 168)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ud5g6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hytxr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lgbs2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x0fml")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uvpe0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jhjxh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tchxr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5mxg4")
-}],
-"loop": true,
-"name": &"idle_hechizero",
-"speed": 12.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgbs2"]
-size = Vector2(34, 56)
-
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 [node name="Escena principal" type="Node2D" unique_id=533774255]
 
 [node name="HUD" parent="." unique_id=1553573608 instance=ExtResource("2_uxd1d")]
@@ -94,14 +26,10 @@ size = Vector2(34, 56)
 [node name="Personaje" parent="." unique_id=274527602 instance=ExtResource("2_3tyi2")]
 position = Vector2(-3, 509)
 
-[node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895]
+[node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895 groups=["mascara_camara"]]
 zoom = Vector2(3.8, 3.8)
 limit_left = -160
-<<<<<<< HEAD
-limit_top = -672
-=======
 limit_top = -528
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 limit_right = 144
 limit_bottom = 528
 
@@ -115,27 +43,30 @@ texture_mode = 1
 
 [node name="Node2D" type="Node2D" parent="." unique_id=78772810]
 
-[node name="CharacterBody2D" parent="Node2D" unique_id=2112557145 instance=ExtResource("3_imiid")]
-position = Vector2(-132, 420)
+[node name="CharacterBody2D4" parent="Node2D" unique_id=353243289 instance=ExtResource("3_imiid")]
+position = Vector2(-132, -206)
+
+[node name="CharacterBody2D8" parent="Node2D" unique_id=702463694 instance=ExtResource("3_imiid")]
+position = Vector2(65, -478)
+
+[node name="CharacterBody2D9" parent="Node2D" unique_id=2112557145 instance=ExtResource("3_imiid")]
+position = Vector2(-47, -334)
+
+[node name="CharacterBody2D6" parent="Node2D" unique_id=646393805 instance=ExtResource("3_imiid")]
+position = Vector2(-54, -126)
+
+[node name="CharacterBody2D3" parent="Node2D" unique_id=1634060187 instance=ExtResource("3_imiid")]
+position = Vector2(59, 50)
+
+[node name="CharacterBody2D5" parent="Node2D" unique_id=743160611 instance=ExtResource("3_imiid")]
+position = Vector2(107, 194)
+
+[node name="CharacterBody2D2" parent="Node2D" unique_id=1557969164 instance=ExtResource("3_imiid")]
+position = Vector2(63, 354)
+
+[node name="CharacterBody2D" parent="Node2D" unique_id=232754084 instance=ExtResource("3_imiid")]
+position = Vector2(-134, 418)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=582719382]
 stream = ExtResource("5_hxpc2")
 autoplay = true
-<<<<<<< HEAD
-
-[node name="Hechizero" type="CharacterBody2D" parent="." unique_id=2069056250]
-script = ExtResource("6_lgbs2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hechizero" unique_id=369933162]
-position = Vector2(129, -607)
-scale = Vector2(0.92, 0.958)
-sprite_frames = SubResource("SpriteFrames_ud5g6")
-animation = &"idle_hechizero"
-autoplay = "idle_hechizero"
-frame_progress = 0.1265536
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hechizero" unique_id=1777311961]
-position = Vector2(131, -557)
-shape = SubResource("RectangleShape2D_lgbs2")
-=======
->>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
