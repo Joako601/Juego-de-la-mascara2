@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bwf6oljff6etb"]
+
+[ext_resource type="Script" uid="uid://d10of3rkgalay" path="res://proyectil_soldado.gd" id="1_0x5n2"]
+[ext_resource type="Texture2D" uid="uid://bvp5mvb4uagus" path="res://Assets/animacion mascara/WhatsApp_Image_2026-02-01_at_9.00.34_AM-removebg-preview.png" id="2_2btya"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ys1q"]
+atlas = ExtResource("2_2btya")
+region = Rect2(410, 32, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dbtj"]
+atlas = ExtResource("2_2btya")
+region = Rect2(427, 32, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ank2o"]
+atlas = ExtResource("2_2btya")
+region = Rect2(444, 32, 17, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g103"]
+atlas = ExtResource("2_2btya")
+region = Rect2(461, 32, 17, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvjma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ys1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dbtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ank2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g103")
+}],
+"loop": true,
+"name": &"bala",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oqq7"]
+size = Vector2(9, 2)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1465636052]
+script = ExtResource("1_0x5n2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=407025798]
+scale = Vector2(0.7058824, 0.2857143)
+sprite_frames = SubResource("SpriteFrames_xvjma")
+animation = &"bala"
+frame_progress = 0.09820315
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2100876978]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_7oqq7")
